@@ -10,8 +10,7 @@ metadata:
   name: rotator
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -22,12 +21,5 @@ spec:
       - image: rotator
         name: rotator
         resources: {}
-        volumeMounts:
-        - mountPath: /tmp/rotator
-          name: rotator-claim0
       restartPolicy: Always
-      volumes:
-      - name: rotator-claim0
-        persistentVolumeClaim:
-          claimName: rotator-claim0
 status: {}

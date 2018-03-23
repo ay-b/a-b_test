@@ -10,8 +10,7 @@ metadata:
   name: nginx
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -22,23 +21,11 @@ spec:
       - env:
         - name: DOMAIN_NAME
           value: localhost
-        image: nginx:alpine
+        image: nginx
         name: nginx
         ports:
         - containerPort: 80
         - containerPort: 443
         resources: {}
-        volumeMounts:
-        - mountPath: /etc/nginx/nginx.conf
-          name: nginx-claim0
-        - mountPath: /etc/nginx/conf.d
-          name: nginx-claim1
       restartPolicy: Always
-      volumes:
-      - name: nginx-claim0
-        persistentVolumeClaim:
-          claimName: nginx-claim0
-      - name: nginx-claim1
-        persistentVolumeClaim:
-          claimName: nginx-claim1
 status: {}

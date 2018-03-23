@@ -8,11 +8,11 @@ RUN echo "http://dl-8.alpinelinux.org/alpine/edge/community" >> /etc/apk/reposit
     pip install web.py 
 
 
-WORKDIR /tmp/rotator
+WORKDIR /tmp
 
 EXPOSE 8080
 
-COPY /rotator/*.* /tmp/
+COPY ./rotator /tmp
 
 ENTRYPOINT ["/usr/bin/python"]
 
