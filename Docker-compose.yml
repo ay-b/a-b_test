@@ -1,0 +1,24 @@
+version: '3.2'
+services: 
+  nginx:
+    image: nginx:alpine
+    depends_on: 
+      - rotator
+    environment:
+      DOMAIN_NAME: "localhost"
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - rotator
+    volumes:
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf   
+      - ./nginx/conf.d:/etc/nginx/conf.d 
+    restart: always
+
+  rotator:
+    build: 
+      context: ./
+      dockerfile: Dockerfile.python
+    volumes:
+      - ./rotator:/tmp/rotator
