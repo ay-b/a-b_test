@@ -42,7 +42,7 @@ Nginx reverse proxy is working in front of python script
 Internet --> [ Kubernetes [ Nginx.pod --> Python.pod ] ]  
 
 Rotator works at port 8080, while Nginx listens to 80 and proxying requests to Rotator.  
-Rotator has a hartbeat URL `/hearbeat` which can be adressed by a monitoring system
+Rotator has a hartbeat URL `/heartbeat` which can be adressed by a monitoring system
 
 ### Deployment
 First variant:
@@ -52,12 +52,12 @@ First variant:
 Second variant:
     * ssh to the k8s 
     * type
-    ```
-     kubectl create -f rotator-deployment.yaml
-     kubectl create -f rotator-service.yaml
-     kubectl create -f nginx-deployment.yaml
-     kubectl create -f nginx-service.yaml
-    ```
+```
+kubectl create -f rotator-deployment.yaml  
+kubectl create -f rotator-service.yaml  
+kubectl create -f nginx-deployment.yaml  
+kubectl create -f nginx-service.yaml  
+```
     * if necessary, type `kubectl expose deployment nginx --type=NodePort` to get access from outside
 
 ### Monitoring
