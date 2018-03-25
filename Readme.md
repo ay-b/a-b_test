@@ -1,7 +1,7 @@
-#Installation and deployment instructions
+# Installation and deployment instructions
 
-##Task
-###Create rotator app deployment for k8s 
+## Task
+### Create rotator app deployment for k8s 
 1. create node.js/python/ruby/golang app named “rotator”  
     1.1. application should have /tag HTTP endpoint  
     1.2. response from endpoint should be taken from “rotator.json” file with contents:  
@@ -31,20 +31,20 @@
 ingress-service.yaml”  
 6. BONUS: configure SSL termination with https://letsencrypt.org  
 
-###Prereq's
+### Prereq's
 Minikube/Kubernetes or Docker with compose
 
-###Source
+### Source
 https://github.com/ay-b/a-b_test
 
-###Map
+### Map
 Nginx reverse proxy is working in front of python script  
 Internet --> [ Kubernetes [ Nginx.pod --> Python.pod ] ]  
 
 Rotator works at port 8080, while Nginx listens to 80 and proxying requests to Rotator.  
 Rotator has a hartbeat URL `/hearbeat` which can be adressed by a monitoring system
 
-###Deployment
+### Deployment
 First variant:
     * in the project folder type `docker-compose up`
     * point at `localhost` in the browser 
@@ -60,10 +60,11 @@ Second variant:
     ```
     * if necessary, type `kubectl expose deployment nginx --type=NodePort` to get access from outside
 
-###Monitoring
+### Monitoring
 There is a shell script in the "monitor" folder, which can be run at any *nix host. This script does necessary runs against the target host and showing the stats with dropping result to the external `log.txt` file.  
 
-//TODO - make an automated heartbeat/stats monitor script in a container  
-
+### TODO 
+- replace quick and dirty monitoring script with an automated heartbeat/stats monitor script in a container  
+- spend a buck to have a place to implement HTTPS with LetsEncrypt
 
 
