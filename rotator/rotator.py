@@ -5,7 +5,7 @@ from numpy.random import choice
 
 urls = (
     '/', 'index',
-    '/one', 'one'
+    '/heartbeat', 'heartbeat'
 )
 
 class index:
@@ -27,9 +27,9 @@ class index:
             rnd_list.extend([resp] * wght) #here we place each resp multiply times into the list (according to its weight)
         return ''.join(random.choice(rnd_list))
         
-class one:
-    def GET(one):
-        return "Hello, one!!"
+class heartbeat:
+    def GET(heartbeat):
+        return "OK. Alive"
 
 if __name__ == "__main__":
     app = web.application(urls, globals())
